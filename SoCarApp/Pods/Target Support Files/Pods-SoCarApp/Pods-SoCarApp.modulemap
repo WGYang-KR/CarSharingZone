@@ -1,0 +1,6 @@
+framework module Pods_SoCarApp {
+  umbrella header "Pods-SoCarApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
