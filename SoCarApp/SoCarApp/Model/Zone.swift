@@ -7,6 +7,10 @@
 
 import Foundation
 
+//struct ZonesResponse: Codable {
+//    let zones: [Zone]
+//}
+
 struct Zone: Codable {
     struct Location: Codable {
         let lat: Double

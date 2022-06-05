@@ -14,7 +14,13 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        APIService.requestZones{
+            zones in
+            print(zones)
+        }
 
+        
 
     }
     

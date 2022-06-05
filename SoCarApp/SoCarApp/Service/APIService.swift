@@ -8,38 +8,41 @@
 import Foundation
 import RxSwift
 
-let MenuUrl = "https://firebasestorage.googleapis.com/v0/b/rxswiftin4hours.appspot.com/o/fried_menus.json?alt=media&token=42d5cb7e-8ec4-48f9-bf39-3049e796c936"
+
+
 
 class APIService {
-    static func fetchAllMenusRx() -> Observable<Data> {
-        return Observable.create { emitter in
-            fetchAllMenus() { result in
-                switch result {
-                case let .success(data):
-                    emitter.onNext(data)
-                    emitter.onCompleted()
-                case let .failure(error):
-                    emitter.onError(error)
-                }
-            }
-            return Disposables.create()
+    static let zonesUrl = "http://localhost:3000/zones"
+    static let carsUrl = ""
+    
+    static func requestZones(_ completion: @escaping ([Zone]) -> Void) {
+        guard let url = URL(string: zonesUrl) else {
+            print("URL Error")
+            return
         }
-    }
-
-    static func fetchAllMenus(onComplete: @escaping (Result<Data, Error>) -> Void) {
-        URLSession.shared.dataTask(with: URL(string: MenuUrl)!) { data, res, err in
-            if let err = err {
-                onComplete(.failure(err))
-                return
-            }
+        let session = URLSession(configuration: .default)
+        let dataTask: URLSessionDataTask = session.dataTask(with: url){
+            data, response, error in
+            
+            if let error = error { print(error) ; return }
             guard let data = data else {
-                let httpResponse = res as! HTTPURLResponse
-                onComplete(.failure(NSError(domain: "no data",
-                                            code: httpResponse.statusCode,
-                                            userInfo: nil)))
+                print("The data is empty")
                 return
             }
-            onComplete(.success(data))
-        }.resume()
+            
+            do {
+                let zones : [Zone] = try JSONDecoder().decode([Zone].self, from: data)
+                completion(zones)
+            } catch(let error) {
+                print(error)
+                return
+            }
+            
+        }
+        dataTask.resume()
+    }
+    
+    func requestCars(_ zoneID: String, _ completion: @escaping ([Car])-> Void) {
+        
     }
 }

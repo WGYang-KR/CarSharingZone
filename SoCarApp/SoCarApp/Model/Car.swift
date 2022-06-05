@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct CarsResponse: Codable {
+    let cars: [Car]
+}
+
 struct Car: Codable {
     let id: String
     let name: String
