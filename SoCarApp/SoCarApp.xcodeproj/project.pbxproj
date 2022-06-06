@@ -20,6 +20,8 @@
 		6A411D862848A03400E092BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A411D842848A03400E092BD /* LaunchScreen.storyboard */; };
 		6A58E38D284D8FC500456E76 /* ZoneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E38C284D8FC400456E76 /* ZoneAnnotation.swift */; };
 		6A58E399284DAB4900456E76 /* CarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E398284DAB4900456E76 /* CarListViewController.swift */; };
+		6A58E39B284DB01400456E76 /* CarListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E39A284DB01400456E76 /* CarListTableViewCell.swift */; };
+		6A58E39E284DB0CA00456E76 /* FavoriteZoneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E39D284DB0CA00456E76 /* FavoriteZoneManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		6A411D872848A03400E092BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A58E38C284D8FC400456E76 /* ZoneAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneAnnotation.swift; sourceTree = "<group>"; };
 		6A58E398284DAB4900456E76 /* CarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListViewController.swift; sourceTree = "<group>"; };
+		6A58E39A284DB01400456E76 /* CarListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListTableViewCell.swift; sourceTree = "<group>"; };
+		6A58E39D284DB0CA00456E76 /* FavoriteZoneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteZoneManager.swift; sourceTree = "<group>"; };
 		E0F401DC11CABAA1429E52E9 /* Pods_SoCarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoCarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C4C6708D1A9E0E7191EA24 /* Pods-SoCarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoCarApp.release.xcconfig"; path = "Target Support Files/Pods-SoCarApp/Pods-SoCarApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +105,7 @@
 		6A411D782848A02E00E092BD /* SoCarApp */ = {
 			isa = PBXGroup;
 			children = (
+				6A58E39C284DB0B000456E76 /* FavoriteZone */,
 				6A2B0268284CB089002332DC /* Service */,
 				6A2B0263284B2C6C002332DC /* Model */,
 				6A58E38F284DA34000456E76 /* CarListPage */,
@@ -120,8 +125,17 @@
 			isa = PBXGroup;
 			children = (
 				6A58E398284DAB4900456E76 /* CarListViewController.swift */,
+				6A58E39A284DB01400456E76 /* CarListTableViewCell.swift */,
 			);
 			path = CarListPage;
+			sourceTree = "<group>";
+		};
+		6A58E39C284DB0B000456E76 /* FavoriteZone */ = {
+			isa = PBXGroup;
+			children = (
+				6A58E39D284DB0CA00456E76 /* FavoriteZoneManager.swift */,
+			);
+			path = FavoriteZone;
 			sourceTree = "<group>";
 		};
 		C15AB986A2251385DFA401BA /* Frameworks */ = {
@@ -259,11 +273,13 @@
 				6A411D7E2848A02E00E092BD /* ViewController.swift in Sources */,
 				6A2B026A284CB09C002332DC /* APIService.swift in Sources */,
 				6A411D7A2848A02E00E092BD /* AppDelegate.swift in Sources */,
+				6A58E39E284DB0CA00456E76 /* FavoriteZoneManager.swift in Sources */,
 				6A2B0265284B2CD9002332DC /* Car.swift in Sources */,
 				6A58E399284DAB4900456E76 /* CarListViewController.swift in Sources */,
 				6A411D7C2848A02E00E092BD /* SceneDelegate.swift in Sources */,
 				6A2B025F284B0B90002332DC /* MainViewController.swift in Sources */,
 				6A58E38D284D8FC500456E76 /* ZoneAnnotation.swift in Sources */,
+				6A58E39B284DB01400456E76 /* CarListTableViewCell.swift in Sources */,
 				6A2B0267284B2CE3002332DC /* Zone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
