@@ -12,14 +12,25 @@ class MainViewController: UIViewController {
 
     @IBOutlet var mapView: MKMapView!
     
+    var zones: [Zone]!
+    
+    let mkSpanSetting =  MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01) //초기 축적도
+    let mkInitialCoordinate = CLLocationCoordinate2D(latitude: 37.54330366639085, longitude: 127.04455548501139) //서울숲
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+    
+        mapView.setRegion(MKCoordinateRegion(center: mkInitialCoordinate, span: mkSpanSetting), animated: true )
+        
         APIService.requestZones{
             zones in
-            print(zones)
+            self.zones = zones
+            print(self.zones)
         }
-
+        
+        //핀 만들기
         
 
     }
@@ -39,4 +50,8 @@ class MainViewController: UIViewController {
     }
     */
 
+}
+
+extension MainViewController: MKMapViewDelegate {
+    
 }
