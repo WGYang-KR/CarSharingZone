@@ -58,14 +58,7 @@ class MainViewController: UIViewController {
         
         for zone in zones {
             
-            let zoneCoordi = CLLocationCoordinate2D(latitude: zone.location.lat, longitude: zone.location.lng)
-            
-            let pin = ZoneAnnotation()
-            
-            pin.coordinate = zoneCoordi
-            pin.title = zone.name
-            pin.subtitle = zone.alias
-            pin.zoneID = zone.id
+            let pin = ZoneAnnotation(zone: zone)
             mapView.addAnnotation(pin)
         }
     }
@@ -235,7 +228,7 @@ extension MainViewController: MKMapViewDelegate {
         //ZoneAnnotation으로 형 변환
         if let zoneAnnotation = view.annotation as? ZoneAnnotation {
             
-            print("Zone Clicked. ZoneId: \(zoneAnnotation.zoneID)")
+            print("Zone Clicked. ZoneId: \(zoneAnnotation.zone)")
         } else {
             print("Error: Not ZoneAnnotation")
         }

@@ -19,8 +19,7 @@
 		6A411D832848A03400E092BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A411D822848A03400E092BD /* Assets.xcassets */; };
 		6A411D862848A03400E092BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A411D842848A03400E092BD /* LaunchScreen.storyboard */; };
 		6A58E38D284D8FC500456E76 /* ZoneAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E38C284D8FC400456E76 /* ZoneAnnotation.swift */; };
-		6A58E392284DA36900456E76 /* CarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E390284DA36900456E76 /* CarListViewController.swift */; };
-		6A58E393284DA36900456E76 /* CarListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A58E391284DA36900456E76 /* CarListViewController.xib */; };
+		6A58E399284DAB4900456E76 /* CarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E398284DAB4900456E76 /* CarListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +37,7 @@
 		6A411D852848A03400E092BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A411D872848A03400E092BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A58E38C284D8FC400456E76 /* ZoneAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneAnnotation.swift; sourceTree = "<group>"; };
-		6A58E390284DA36900456E76 /* CarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListViewController.swift; sourceTree = "<group>"; };
-		6A58E391284DA36900456E76 /* CarListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarListViewController.xib; sourceTree = "<group>"; };
+		6A58E398284DAB4900456E76 /* CarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListViewController.swift; sourceTree = "<group>"; };
 		E0F401DC11CABAA1429E52E9 /* Pods_SoCarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoCarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C4C6708D1A9E0E7191EA24 /* Pods-SoCarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoCarApp.release.xcconfig"; path = "Target Support Files/Pods-SoCarApp/Pods-SoCarApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				6A2B025D284B0B90002332DC /* MainViewController.swift */,
-				6A411D7F2848A02E00E092BD /* Main.storyboard */,
 				6A58E38C284D8FC400456E76 /* ZoneAnnotation.swift */,
 			);
 			path = MainPage;
@@ -109,6 +106,7 @@
 				6A58E38F284DA34000456E76 /* CarListPage */,
 				6A2B025C284B0B6A002332DC /* MainPage */,
 				6A411D792848A02E00E092BD /* AppDelegate.swift */,
+				6A411D7F2848A02E00E092BD /* Main.storyboard */,
 				6A411D7B2848A02E00E092BD /* SceneDelegate.swift */,
 				6A411D7D2848A02E00E092BD /* ViewController.swift */,
 				6A411D822848A03400E092BD /* Assets.xcassets */,
@@ -121,8 +119,7 @@
 		6A58E38F284DA34000456E76 /* CarListPage */ = {
 			isa = PBXGroup;
 			children = (
-				6A58E390284DA36900456E76 /* CarListViewController.swift */,
-				6A58E391284DA36900456E76 /* CarListViewController.xib */,
+				6A58E398284DAB4900456E76 /* CarListViewController.swift */,
 			);
 			path = CarListPage;
 			sourceTree = "<group>";
@@ -207,7 +204,6 @@
 				6A411D862848A03400E092BD /* LaunchScreen.storyboard in Resources */,
 				6A411D832848A03400E092BD /* Assets.xcassets in Resources */,
 				6A411D812848A02E00E092BD /* Main.storyboard in Resources */,
-				6A58E393284DA36900456E76 /* CarListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +260,7 @@
 				6A2B026A284CB09C002332DC /* APIService.swift in Sources */,
 				6A411D7A2848A02E00E092BD /* AppDelegate.swift in Sources */,
 				6A2B0265284B2CD9002332DC /* Car.swift in Sources */,
-				6A58E392284DA36900456E76 /* CarListViewController.swift in Sources */,
+				6A58E399284DAB4900456E76 /* CarListViewController.swift in Sources */,
 				6A411D7C2848A02E00E092BD /* SceneDelegate.swift in Sources */,
 				6A2B025F284B0B90002332DC /* MainViewController.swift in Sources */,
 				6A58E38D284D8FC500456E76 /* ZoneAnnotation.swift in Sources */,
