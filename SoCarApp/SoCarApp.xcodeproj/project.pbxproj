@@ -24,8 +24,8 @@
 		6A58E3A6284DC05D00456E76 /* CarListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A58E3A4284DC05D00456E76 /* CarListViewController.xib */; };
 		6A58E3A9284DC09900456E76 /* CarListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E3A7284DC09900456E76 /* CarListTableViewCell.swift */; };
 		6A58E3AA284DC09900456E76 /* CarListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A58E3A8284DC09900456E76 /* CarListTableViewCell.xib */; };
-		6A58E3AD284DC0AB00456E76 /* ZoneInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E3AB284DC0AB00456E76 /* ZoneInfoTableViewCell.swift */; };
-		6A58E3AE284DC0AB00456E76 /* ZoneInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A58E3AC284DC0AB00456E76 /* ZoneInfoTableViewCell.xib */; };
+		6A58E3B0284DDF3F00456E76 /* ZoneInfoTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A58E3AF284DDF3F00456E76 /* ZoneInfoTableHeader.xib */; };
+		6A58E3B2284DDFDE00456E76 /* ZoneInfoTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E3B1284DDFDE00456E76 /* ZoneInfoTableHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +48,8 @@
 		6A58E3A4284DC05D00456E76 /* CarListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarListViewController.xib; sourceTree = "<group>"; };
 		6A58E3A7284DC09900456E76 /* CarListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListTableViewCell.swift; sourceTree = "<group>"; };
 		6A58E3A8284DC09900456E76 /* CarListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarListTableViewCell.xib; sourceTree = "<group>"; };
-		6A58E3AB284DC0AB00456E76 /* ZoneInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneInfoTableViewCell.swift; sourceTree = "<group>"; };
-		6A58E3AC284DC0AB00456E76 /* ZoneInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoneInfoTableViewCell.xib; sourceTree = "<group>"; };
+		6A58E3AF284DDF3F00456E76 /* ZoneInfoTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoneInfoTableHeader.xib; sourceTree = "<group>"; };
+		6A58E3B1284DDFDE00456E76 /* ZoneInfoTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneInfoTableHeader.swift; sourceTree = "<group>"; };
 		E0F401DC11CABAA1429E52E9 /* Pods_SoCarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoCarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C4C6708D1A9E0E7191EA24 /* Pods-SoCarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoCarApp.release.xcconfig"; path = "Target Support Files/Pods-SoCarApp/Pods-SoCarApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,8 +136,8 @@
 				6A58E3A4284DC05D00456E76 /* CarListViewController.xib */,
 				6A58E3A7284DC09900456E76 /* CarListTableViewCell.swift */,
 				6A58E3A8284DC09900456E76 /* CarListTableViewCell.xib */,
-				6A58E3AB284DC0AB00456E76 /* ZoneInfoTableViewCell.swift */,
-				6A58E3AC284DC0AB00456E76 /* ZoneInfoTableViewCell.xib */,
+				6A58E3B1284DDFDE00456E76 /* ZoneInfoTableHeader.swift */,
+				6A58E3AF284DDF3F00456E76 /* ZoneInfoTableHeader.xib */,
 			);
 			path = CarListPage;
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 				6A58E3AA284DC09900456E76 /* CarListTableViewCell.xib in Resources */,
 				6A411D812848A02E00E092BD /* Main.storyboard in Resources */,
 				6A58E3A6284DC05D00456E76 /* CarListViewController.xib in Resources */,
-				6A58E3AE284DC0AB00456E76 /* ZoneInfoTableViewCell.xib in Resources */,
+				6A58E3B0284DDF3F00456E76 /* ZoneInfoTableHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,10 +290,10 @@
 				6A58E3A9284DC09900456E76 /* CarListTableViewCell.swift in Sources */,
 				6A411D7A2848A02E00E092BD /* AppDelegate.swift in Sources */,
 				6A58E39E284DB0CA00456E76 /* FavoriteZoneManager.swift in Sources */,
-				6A58E3AD284DC0AB00456E76 /* ZoneInfoTableViewCell.swift in Sources */,
 				6A2B0265284B2CD9002332DC /* Car.swift in Sources */,
 				6A411D7C2848A02E00E092BD /* SceneDelegate.swift in Sources */,
 				6A58E3A5284DC05D00456E76 /* CarListViewController.swift in Sources */,
+				6A58E3B2284DDFDE00456E76 /* ZoneInfoTableHeader.swift in Sources */,
 				6A2B025F284B0B90002332DC /* MainViewController.swift in Sources */,
 				6A58E38D284D8FC500456E76 /* ZoneAnnotation.swift in Sources */,
 				6A2B0267284B2CE3002332DC /* Zone.swift in Sources */,

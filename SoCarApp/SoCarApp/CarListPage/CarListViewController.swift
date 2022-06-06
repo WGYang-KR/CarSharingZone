@@ -15,7 +15,8 @@ class CarListViewController: UIViewController {
     let carListCellIdentifier = "CarListCell"
     let zoneInfoCellIdentifier = "ZoneInfoCell"
     
-    var carList: [Car] = [Car]()
+    var headerList = [String]() //섹션 헤더
+    var carListInSection = [[Car]]() //섹션 내 차량 리스트
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,74 +26,81 @@ class CarListViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "CarListTableViewCell", bundle: nil), forCellReuseIdentifier: carListCellIdentifier)
-        tableView.register(UINib(nibName: "ZoneInfoTableViewCell", bundle: nil), forCellReuseIdentifier: zoneInfoCellIdentifier
-        )
+        
+        let headerView = ZoneInfoTableHeader(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 70))
+        headerView.zoneNameLabel.text = self.selectedZone.name
+        headerView.zoneAliasLabel.text = self.selectedZone.alias
+        tableView.tableHeaderView = headerView
         
         // Do any additional setup after loading the view.
-        APIService.requestCars("16"){
+        APIService.requestCars(selectedZone.id){
             cars in
-            self.carList = cars
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            print("cars:\(cars)")
+            self.figureHeaderCarList(cars: cars)
         }
     }
 
+    //MARK: - 차량 종류별 섹션 헤더, 섹션 리스트 생성
+    func figureHeaderCarList(cars:[Car]) {
+       
+        DispatchQueue.global().async {
+           
+            var dicCars = [String : [Car]]()
+            
+            for car in cars {
+                
+                if var oldCarList:[Car] = dicCars[car.category] {
+                    oldCarList.append(car)
+                    dicCars[car.category] = oldCarList
+                } else {
+                    let newCarList = [car]
+                    dicCars[car.category] = newCarList
+                }
+            }
+            
+            for (key,value) in dicCars {
+                self.headerList.append(key)
+                self.carListInSection.append(value)
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
 }
 
 extension CarListViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return headerList.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headerList[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        switch section {
-        
-        case 0:
-            return 1
-        case 1:
-            return carList.count
-        default:
-            return 0
-        }
+        return carListInSection[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   
-        let sectionNum = indexPath.section
-        switch sectionNum {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: zoneInfoCellIdentifier, for: indexPath) as? ZoneInfoTableViewCell else {
-                print("Error: \(#function)")
-                return ZoneInfoTableViewCell()
-            }
-            
-            cell.zoneNameLabel.text = selectedZone.name
-            cell.zoneAliasLabel.text = selectedZone.alias
-            
-            return cell
-            
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: carListCellIdentifier, for: indexPath) as? CarListTableViewCell else {
+ 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: carListCellIdentifier, for: indexPath) as? CarListTableViewCell else {
                 print("Error: \(#function)")
                 return CarListTableViewCell()
-            }
-            
-            let car = carList[indexPath.row]
-    //        cell.carImageView
-            cell.carNameLabel.text = car.name
-            cell.carDescriptionLabel.text = car.description
-      
-            return cell
-            
-        default:
-            return UITableViewCell()
-            
         }
+            
+        let car = carListInSection[indexPath.section][indexPath.row]
+        //cell.carImageView
+        cell.carNameLabel.text = car.name
+        cell.carDescriptionLabel.text = car.description
+        
+     
+        return cell
+            
     }
     
    
