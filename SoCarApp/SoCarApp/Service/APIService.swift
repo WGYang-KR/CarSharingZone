@@ -13,7 +13,7 @@ import RxSwift
 
 class APIService {
     static let zonesUrl = "http://localhost:3000/zones"
-    static let carsUrl = ""
+    static let carsUrl = "http://localhost:3000/cars?zones_like="
     
     static func requestZones(_ completion: @escaping ([Zone]) -> Void) {
         guard let url = URL(string: zonesUrl) else {
@@ -42,7 +42,32 @@ class APIService {
         dataTask.resume()
     }
     
-    func requestCars(_ zoneID: String, _ completion: @escaping ([Car])-> Void) {
+    static func requestCars(_ zoneID: String, _ completion: @escaping ([Car])-> Void) {
         
+        guard let url = URL(string: carsUrl+zoneID ) else {
+            print("URL Error")
+            return
+        }
+        let session = URLSession(configuration: .default)
+        let dataTask: URLSessionDataTask = session.dataTask(with: url){
+            data, response, error in
+            
+            if let error = error { print(error) ; return }
+            guard let data = data else {
+                print("The data is empty")
+                return
+            }
+            
+            do {
+                let cars : [Car] = try JSONDecoder().decode([Car].self, from: data)
+                completion(cars)
+            } catch(let error) {
+                print(error)
+                return
+            }
+            
+        }
+        dataTask.resume()
     }
+    
 }

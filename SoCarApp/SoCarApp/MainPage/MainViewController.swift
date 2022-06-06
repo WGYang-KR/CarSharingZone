@@ -44,10 +44,11 @@ class MainViewController: UIViewController {
         APIService.requestZones{
             zones in
             self.zones = zones
-            print(self.zones)
             //핀 만들기
-            self.addPin(zones: self.zones)
-    
+            DispatchQueue.main.async {
+                self.addPin(zones: self.zones)
+            }
+         
         }
         
       
@@ -229,6 +230,13 @@ extension MainViewController: MKMapViewDelegate {
         if let zoneAnnotation = view.annotation as? ZoneAnnotation {
             
             print("Zone Clicked. ZoneId: \(zoneAnnotation.zone)")
+            
+            let carListVC = CarListViewController()
+            carListVC.selectedZone = zoneAnnotation.zone
+            carListVC.modalPresentationStyle = .overFullScreen
+            carListVC.modalTransitionStyle = .crossDissolve
+            self.present(carListVC, animated: true)
+            
         } else {
             print("Error: Not ZoneAnnotation")
         }
