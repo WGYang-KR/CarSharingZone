@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "_ic24_favorite_blue@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "_ic24_favorite_blue@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
