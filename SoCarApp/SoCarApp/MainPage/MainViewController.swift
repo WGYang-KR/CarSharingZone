@@ -72,7 +72,10 @@ class MainViewController: UIViewController {
 
     
     @IBAction func touchUpInsideFavoriteZoneButton(_ sender: UIButton) {
-        
+        let favoriteZoneVC = FavoriteZoneViewController()
+        favoriteZoneVC .modalPresentationStyle = .overFullScreen
+        favoriteZoneVC .modalTransitionStyle = .crossDissolve
+        self.present(favoriteZoneVC, animated: true)
     }
 
     

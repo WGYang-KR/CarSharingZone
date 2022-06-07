@@ -15,7 +15,6 @@ class CarListViewController: UIViewController {
     var selectedZone: Zone! //선택된 Zone
     
     let carListCellIdentifier = "CarListCell"
-    let zoneInfoCellIdentifier = "ZoneInfoCell"
     
     var headerList = [String]() //섹션 헤더
     var carListInSection = [[Car]]() //섹션 내 차량 리스트
@@ -29,8 +28,6 @@ class CarListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //print(selectedZone)
-        tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "CarListTableViewCell", bundle: nil), forCellReuseIdentifier: carListCellIdentifier)
@@ -136,6 +133,3 @@ extension CarListViewController: UITableViewDataSource {
    
 }
 
-extension CarListViewController: UITableViewDelegate {
-    
-}

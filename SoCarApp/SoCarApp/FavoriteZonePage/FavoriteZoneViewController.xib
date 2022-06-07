@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteZoneViewController" customModule="SoCarApp" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="gjo-IN-QrP" id="Q1r-yj-naH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,9 +22,14 @@
             <subviews>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3G-Us-2TD">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <items>
                         <navigationItem id="Y6L-Mj-f8a">
-                            <barButtonItem key="rightBarButtonItem" image="ic24_close" id="ilh-rn-jqR"/>
+                            <barButtonItem key="rightBarButtonItem" image="ic24_close" id="ilh-rn-jqR">
+                                <connections>
+                                    <action selector="touchUpSideCloseButton" destination="-1" id="yPL-lH-cES"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
