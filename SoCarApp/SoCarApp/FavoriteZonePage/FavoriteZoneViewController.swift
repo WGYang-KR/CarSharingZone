@@ -10,17 +10,45 @@ import UIKit
 class FavoriteZoneViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-    let ZoneCellIdentifier = "ZoneCell"
+    let zoneCellIdentifier = "ZoneCell"
     var mainPageViewController: UIViewController!
+    var favoriteZones =  [Zone]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.dataSource = self
+        tableView.delegate = self
         installHeader()
+        tableView.register(UINib(nibName: "ZoneTableViewCell", bundle: nil), forCellReuseIdentifier: zoneCellIdentifier)
         
-        tableView.register(UINib(nibName: "ZoneTableViewCell", bundle: nil), forCellReuseIdentifier: ZoneCellIdentifier)
-        
+        loadFavoriteZones()
        
+    }
+    
+    func loadFavoriteZones() {
+        let apiService = APIService()
+        let favoriteZoneManager = FavoriteZoneManager()
+        let zoneIDList = favoriteZoneManager.favoriteZones
+        //모든 존 정보 받기
+        apiService.requestZones(){
+            allZones in
+            DispatchQueue.global().async {
+                print("Favorite Zones:")
+                for zoneID in zoneIDList {
+                   
+                    if let zone = allZones.first(where: {$0.id == zoneID}) {
+                        self.favoriteZones.append(zone)
+                        print("\(zoneID)")
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
     }
     
     @IBAction func touchUpSideCloseButton() {
@@ -52,16 +80,30 @@ class FavoriteZoneViewController: UIViewController {
 }
 
 extension FavoriteZoneViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.favoriteZones.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: zoneCellIdentifier, for: indexPath) as? ZoneTableViewCell else {
+            print(#function)
+            return UITableViewCell()
+        }
+        
+        let zone = self.favoriteZones[indexPath.row]
+        cell.zoneID = zone.id
+        cell.nameLabel.text = zone.name
+        cell.aliasLabel.text = zone.alias
+        
+        return cell
     }
     
     
 }
 extension FavoriteZoneViewController: UITableViewDelegate {
+    
+    //클릭시 현재 창 종료, 해당 존 위치로 이동, 해당 존 차량목록 페이지 출력
     
 }

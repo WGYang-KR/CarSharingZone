@@ -9,9 +9,14 @@ import UIKit
 
 class ZoneTableViewCell: UITableViewCell {
 
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var aliasLabel: UILabel!
+    var zoneID: String!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

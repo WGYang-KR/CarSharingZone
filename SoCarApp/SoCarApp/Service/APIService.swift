@@ -37,6 +37,7 @@ class APIService {
             }
         }
     }
+
     
     func requestZones(_ completion: @escaping ([Zone]) -> Void) {
         guard let url = URL(string: zonesUrl) else {
