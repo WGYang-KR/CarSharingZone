@@ -27,7 +27,6 @@
                                 <state key="normal" image="favorite_zone"/>
                                 <connections>
                                     <action selector="touchUpInsideFavoriteZoneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s2x-Bq-mQx"/>
-                                    <segue destination="TWn-lP-Iac" kind="show" id="9Cj-OX-q98"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpm-x8-UwG">
@@ -60,22 +59,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="910" y="145"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="qHv-hF-zd6">
-            <objects>
-                <viewController id="TWn-lP-Iac" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fqw-q3-kty">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="sRv-9M-37f"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="3Ho-FV-28B"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aTM-RN-YlP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1820" y="-31"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hW4-ds-YDD">
