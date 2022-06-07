@@ -68,6 +68,7 @@ class MainViewController: UIViewController {
             let pin = ZoneAnnotation(zone: zone)
             mapView.addAnnotation(pin)
         }
+        openCarListPage(zoneID:"14")
     }
 
     
@@ -94,6 +95,25 @@ class MainViewController: UIViewController {
         }
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.follow, animated: true)
+    }
+    
+    func openCarListPage(zoneID: String) {
+        
+        //zoneID에 해당하는 annotation 찾아서 이동.
+        if let zonePin = self.mapView.annotations.first(where: { annotation in
+            if let zoneAnnot = annotation as? ZoneAnnotation {
+                if  zoneAnnot.zone.id == zoneID { return true }
+            }
+            return false }
+        ) {
+                print("zonePin found")
+            //zonePin 위치로 이동
+            //carList 열기
+        } else {
+            
+            print("해당 Pin 찾을 수 없음")
+        }
+ 
     }
 
 }
@@ -191,7 +211,6 @@ extension MainViewController: CLLocationManagerDelegate {
 
 extension MainViewController: MKMapViewDelegate {
 
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self) else {

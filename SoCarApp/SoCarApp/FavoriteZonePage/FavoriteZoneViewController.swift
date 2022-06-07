@@ -11,7 +11,7 @@ class FavoriteZoneViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     let zoneCellIdentifier = "ZoneCell"
-    var mainPageViewController: UIViewController!
+    var mainPageViewController: MainViewController!
     var favoriteZones =  [Zone]()
     
     
@@ -104,6 +104,11 @@ extension FavoriteZoneViewController: UITableViewDataSource {
 }
 extension FavoriteZoneViewController: UITableViewDelegate {
     
-    //클릭시 현재 창 종료, 해당 존 위치로 이동, 해당 존 차량목록 페이지 출력
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let zoneIDWillMove = favoriteZones[indexPath.row].id
+        self.dismiss(animated: true){
+            self.mainPageViewController.openCarListPage(zoneID: zoneIDWillMove)
+        }
+    }
     
 }
