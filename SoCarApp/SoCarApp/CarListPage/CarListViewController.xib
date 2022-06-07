@@ -21,35 +21,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="L6Z-mB-hoM">
-                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBI-Yd-5B7">
-                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <items>
-                        <navigationItem id="wMU-hR-8h2">
-                            <barButtonItem key="leftBarButtonItem" image="ic24_back" id="vG3-8a-cLG"/>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="L6Z-mB-hoM" secondAttribute="bottom" id="3g5-C7-8qP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VBI-Yd-5B7" secondAttribute="trailing" id="M1r-ow-MVj"/>
-                <constraint firstItem="L6Z-mB-hoM" firstAttribute="top" secondItem="VBI-Yd-5B7" secondAttribute="bottom" id="YHn-St-rbx"/>
-                <constraint firstItem="VBI-Yd-5B7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ycp-vh-sme"/>
-                <constraint firstItem="VBI-Yd-5B7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="b4z-xl-mz6"/>
+                <constraint firstItem="L6Z-mB-hoM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IZP-0f-V7K"/>
                 <constraint firstItem="L6Z-mB-hoM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="c9G-Qc-fjT"/>
-                <constraint firstAttribute="trailing" secondItem="L6Z-mB-hoM" secondAttribute="trailing" id="dKN-9v-bnM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L6Z-mB-hoM" secondAttribute="trailing" id="dKN-9v-bnM"/>
             </constraints>
             <point key="canvasLocation" x="132" y="52"/>
         </view>
     </objects>
     <resources>
-        <image name="ic24_back" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

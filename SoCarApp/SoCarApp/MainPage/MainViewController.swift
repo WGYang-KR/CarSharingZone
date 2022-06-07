@@ -51,6 +51,11 @@ class MainViewController: UIViewController {
          
         }
         
+        
+        // bar button 설정
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic24_back")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic24_back")
+        
       
 
     }
@@ -205,7 +210,7 @@ extension MainViewController: MKMapViewDelegate {
         if annotationView == nil {
             //없으면 하나 만들어 주시고
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Custom")
-            annotationView?.canShowCallout = true
+//            annotationView?.canShowCallout = true
             
 //            //callOutView를 통해서 추가적인 액션을 더해줄수도 있겠죠! 와 무지 간편합니다!
 //            let miniButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -233,9 +238,13 @@ extension MainViewController: MKMapViewDelegate {
             
             let carListVC = CarListViewController()
             carListVC.selectedZone = zoneAnnotation.zone
-            carListVC.modalPresentationStyle = .overFullScreen
-            carListVC.modalTransitionStyle = .crossDissolve
-            self.present(carListVC, animated: true)
+            
+            //뒤로가기 버튼 설정
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+            
+            
+            navigationController?.pushViewController(carListVC, animated: true)
             
         } else {
             print("Error: Not ZoneAnnotation")

@@ -108,5 +108,4 @@ extension CarListViewController: UITableViewDataSource {
 
 extension CarListViewController: UITableViewDelegate {
     
-    
 }
