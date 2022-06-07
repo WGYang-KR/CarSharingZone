@@ -71,6 +71,7 @@ class MainViewController: UIViewController {
     }
 
     
+    //MARK: - '즐겨찾기 존' 버튼 클릭
     @IBAction func touchUpInsideFavoriteZoneButton(_ sender: UIButton) {
         let favoriteZoneVC = FavoriteZoneViewController()
         favoriteZoneVC .modalPresentationStyle = .overFullScreen
@@ -78,43 +79,32 @@ class MainViewController: UIViewController {
         self.present(favoriteZoneVC, animated: true)
     }
 
-    
+    //MARK: - '현재 위치' 버튼 클릭
     @IBAction func touchUpInsideMyLocationButton() {
         print(#function)
        findMyLocation()
     }
     
     func findMyLocation() {
-        
         guard let currentLocation = locationManager.location else {
             getLocationUsagePermission()
             print("location failed")
             return
         }
-        
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.follow, animated: true)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
+//MARK: - Extension: CLLocationManagerDelegate
 extension MainViewController: CLLocationManagerDelegate {
     
     func getLocationUsagePermission() {
         self.locationManager.requestWhenInUseAuthorization()
     }
     
-    //MARK: - 위치 권한 설정
+    //MARK: 위치 권한 설정
     func checkCurrentLocationAuthorization(authorizationStatus: CLAuthorizationStatus) {
         switch authorizationStatus {
         case .notDetermined:
@@ -149,6 +139,8 @@ extension MainViewController: CLLocationManagerDelegate {
         }
     }
     
+    
+    //MARK: 사용자에게 '설정'으로 이동 안내
     func goSetting() {
         let alert = UIAlertController(title: "위치권한 요청", message: "설정으로 이동하여 위치 권한을 허용해주세요.", preferredStyle: .alert)
         let settingAction = UIAlertAction(title: "설정", style: .default) { action in
@@ -167,6 +159,7 @@ extension MainViewController: CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    //MARK: 현재 위치 권한
     func checkUserLocationServicesAuthorization() {
         let authorizationStatus: CLAuthorizationStatus
         if #available(iOS 14, *) {
