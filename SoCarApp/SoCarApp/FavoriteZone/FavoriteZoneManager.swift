@@ -14,14 +14,14 @@ class FavoriteZoneManager {
     
     
     //즐겨찾는 존 번호 목록
-    lazy var favoriteZones: Set<String> = {
-        if let zones = UserDefaults.standard.object(forKey: userDefaultKey) as? Set<String>
+    lazy var favoriteZones: [String] = {
+        if let zones = UserDefaults.standard.array(forKey: userDefaultKey) as? [String]
         {
             print("기존 zoneList")
             return zones
         } else {
             print("새로운 zoneList")
-            return Set<String>()
+            return [String]()
         }
       
     }()
@@ -34,19 +34,20 @@ class FavoriteZoneManager {
     
     //즐겨찾는 존 번호 추가
     func addFavorite(zoneID: String) {
-        self.favoriteZones.insert(zoneID)
-        print("존 번호 추가")
-        UserDefaults.standard.set(self.favoriteZones, forKey: userDefaultKey)
-
-        print("\(#function): list = \(self.favoriteZones)")
+        if !favoriteZones.contains(zoneID) {
+            print("존 번호 추가")
+            self.favoriteZones.append(zoneID)
+            UserDefaults.standard.set(self.favoriteZones, forKey: userDefaultKey)
+            print("\(#function): list = \(self.favoriteZones)")
+        }
     }
     //즐겨찾는 존 번호 제거
     func removeFavorite(zoneID: String) {
-        if isFavoriteZone(zoneID: zoneID) {
-            self.favoriteZones.remove(zoneID)
+        if let index = self.favoriteZones.firstIndex(of: zoneID) {
+            self.favoriteZones.remove(at: index)
+            UserDefaults.standard.set(self.favoriteZones, forKey: userDefaultKey)
+            print("\(#function): list = \(self.favoriteZones)")
         }
-        UserDefaults.standard.set(self.favoriteZones, forKey: userDefaultKey)
-        print("\(#function): list = \(self.favoriteZones)")
     }
     
 }

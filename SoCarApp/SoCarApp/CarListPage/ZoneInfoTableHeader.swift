@@ -66,12 +66,12 @@ class ZoneInfoTableHeader: UIView {
                     if let favorite_blue = UIImage(named: "_ic24_favorite_blue") {
                         self.favoriteButton.setImage(favorite_blue, for: .normal)
                     }
-//                    self.favoriteZoneManager.addFavorite(zoneID: zoneID)
+                    self.favoriteZoneManager.addFavorite(zoneID: zoneID)
                 } else {
                     if let favorite_gray = UIImage(named: "_ic24_favorite_gray") {
                         self.favoriteButton.setImage(favorite_gray, for: .normal)
                     }
-//                    self.favoriteZoneManager.removeFavorite(zoneID: zoneID)
+                    self.favoriteZoneManager.removeFavorite(zoneID: zoneID)
                 }
             }).disposed(by: disposeBag)
         
