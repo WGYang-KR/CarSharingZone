@@ -74,6 +74,7 @@ class MainViewController: UIViewController {
     //MARK: - '즐겨찾기 존' 버튼 클릭
     @IBAction func touchUpInsideFavoriteZoneButton(_ sender: UIButton) {
         let favoriteZoneVC = FavoriteZoneViewController()
+        favoriteZoneVC.mainPageViewController = self
         favoriteZoneVC .modalPresentationStyle = .overFullScreen
         favoriteZoneVC .modalTransitionStyle = .crossDissolve
         self.present(favoriteZoneVC, animated: true)

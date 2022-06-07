@@ -10,8 +10,8 @@ import UIKit
 class FavoriteZoneViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-    
     let ZoneCellIdentifier = "ZoneCell"
+    var mainPageViewController: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
