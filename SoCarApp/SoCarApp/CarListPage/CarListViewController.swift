@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CarListViewController: UIViewController {
 
@@ -18,6 +20,12 @@ class CarListViewController: UIViewController {
     var headerList = [String]() //섹션 헤더
     var carListInSection = [[Car]]() //섹션 내 차량 리스트
     
+    var isFavoriteZone = false
+    var headerFavoriteButton: UIButton!
+    let favoriteZoneManager = FavoriteZoneManager()
+    
+    var diposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,16 +35,19 @@ class CarListViewController: UIViewController {
         
         tableView.register(UINib(nibName: "CarListTableViewCell", bundle: nil), forCellReuseIdentifier: carListCellIdentifier)
         
-        let headerView = ZoneInfoTableHeader(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 70))
+        let headerView = ZoneInfoTableHeader(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 70), zone: selectedZone)
         headerView.zoneNameLabel.text = self.selectedZone.name
         headerView.zoneAliasLabel.text = self.selectedZone.alias
         tableView.tableHeaderView = headerView
+   
         
         // Do any additional setup after loading the view.
         APIService.requestCars(selectedZone.id){
             cars in
             self.figureHeaderCarList(cars: cars)
         }
+        
+        
     }
 
     //MARK: - 차량 종류별 섹션 헤더, 섹션 리스트 생성
