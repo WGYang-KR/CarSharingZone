@@ -41,7 +41,8 @@ class MainViewController: UIViewController {
         }
         
         
-        APIService.requestZones{
+        let APIServiceIns = APIService()
+        APIServiceIns.requestZones{
             zones in
             self.zones = zones
             //핀 만들기

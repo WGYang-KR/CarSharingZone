@@ -12,10 +12,10 @@ import RxSwift
 
 
 class APIService {
-    static let zonesUrl = "http://localhost:3000/zones"
-    static let carsUrl = "http://localhost:3000/cars?zones_like="
+    let zonesUrl = "http://localhost:3000/zones"
+    let carsUrl = "http://localhost:3000/cars?zones_like="
     
-    static func loadImage(url: URL) -> Observable<UIImage?> {
+    func loadImage(url: URL) -> Observable<UIImage?> {
         return Observable<UIImage?>.create { emitter in
 
             let task = URLSession.shared.dataTask(with: url) { data, _, _ in
@@ -38,7 +38,7 @@ class APIService {
         }
     }
     
-    static func requestZones(_ completion: @escaping ([Zone]) -> Void) {
+    func requestZones(_ completion: @escaping ([Zone]) -> Void) {
         guard let url = URL(string: zonesUrl) else {
             print("URL Error")
             return
@@ -65,7 +65,7 @@ class APIService {
         dataTask.resume()
     }
     
-    static func requestCars(_ zoneID: String, _ completion: @escaping ([Car])-> Void) {
+    func requestCars(_ zoneID: String, _ completion: @escaping ([Car])-> Void) {
         
         guard let url = URL(string: carsUrl+zoneID ) else {
             print("URL Error")

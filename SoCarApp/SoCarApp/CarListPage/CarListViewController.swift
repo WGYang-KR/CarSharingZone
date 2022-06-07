@@ -24,7 +24,7 @@ class CarListViewController: UIViewController {
     var headerFavoriteButton: UIButton!
     let favoriteZoneManager = FavoriteZoneManager()
     
-    var diposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,8 @@ class CarListViewController: UIViewController {
    
         
         // Do any additional setup after loading the view.
-        APIService.requestCars(selectedZone.id){
+        let APIServiceIns = APIService()
+        APIServiceIns.requestCars(selectedZone.id){
             cars in
             self.figureHeaderCarList(cars: cars)
         }
@@ -105,24 +106,33 @@ extension CarListViewController: UITableViewDataSource {
         }
             
         let car = carListInSection[indexPath.section][indexPath.row]
-       
-        let imageURL = URL(string: car.imageUrl)!
-        let disposable = APIService.loadImage(url: imageURL)
-                .observe(on: MainScheduler.instance)
-                .subscribe(onNext: { (image) in
-                    cell.imageView?.image = image
-                }, onCompleted: {
-                    print("completed")
-                })
-        
+    
         cell.carNameLabel.text = car.name
         cell.carDescriptionLabel.text = car.description
+        
+        guard let imageURL = URL(string: car.imageUrl) else {
+            print("imageURL is Empty")
+            return cell
+        }
+        let APIServiceIns = APIService()
+        APIServiceIns.loadImage(url: imageURL)
+                .observe(on: MainScheduler.instance)
+                .subscribe(onNext: { (image) in
+                    if let index:IndexPath = self.tableView.indexPath(for: cell) {
+                        if index.row == indexPath.row {
+                            print("image updated")
+                            cell.carImageView?.image = image
+                        }
+                    }
+                }, onCompleted: {
+                    print("completed")
+                }).disposed(by: disposeBag)
+        
         
      
         return cell
             
     }
-    
    
 }
 
