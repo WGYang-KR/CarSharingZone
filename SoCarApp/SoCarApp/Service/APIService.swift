@@ -15,6 +15,29 @@ class APIService {
     static let zonesUrl = "http://localhost:3000/zones"
     static let carsUrl = "http://localhost:3000/cars?zones_like="
     
+    static func loadImage(url: URL) -> Observable<UIImage?> {
+        return Observable<UIImage?>.create { emitter in
+
+            let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+
+                guard let data = data else {
+                    emitter.onNext(nil)
+                    emitter.onCompleted()
+                    return
+                }
+
+                let image = UIImage(data: data)
+                emitter.onNext(image)
+                emitter.onCompleted()
+            }
+            task.resume()
+
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
     static func requestZones(_ completion: @escaping ([Zone]) -> Void) {
         guard let url = URL(string: zonesUrl) else {
             print("URL Error")

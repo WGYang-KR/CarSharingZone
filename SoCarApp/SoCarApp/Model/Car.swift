@@ -15,6 +15,7 @@ struct Car: Codable {
     let id: String
     let name: String
     let description: String
+    let imageUrl: String
     let category: String
     let zones: [String]
 }

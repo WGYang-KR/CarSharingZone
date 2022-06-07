@@ -105,7 +105,16 @@ extension CarListViewController: UITableViewDataSource {
         }
             
         let car = carListInSection[indexPath.section][indexPath.row]
-        //cell.carImageView
+       
+        let imageURL = URL(string: car.imageUrl)!
+        let disposable = APIService.loadImage(url: imageURL)
+                .observe(on: MainScheduler.instance)
+                .subscribe(onNext: { (image) in
+                    cell.imageView?.image = image
+                }, onCompleted: {
+                    print("completed")
+                })
+        
         cell.carNameLabel.text = car.name
         cell.carDescriptionLabel.text = car.description
         
