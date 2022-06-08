@@ -289,6 +289,9 @@ extension MainViewController: MKMapViewDelegate {
             
             print("Zone Clicked. ZoneId: \(zoneAnnotation.zone)")
             
+            if navigationController?.visibleViewController != self {
+                navigationController?.popToViewController(self, animated: true)
+            }
             //차량 목록 페이지 열기
             let carListVC = CarListViewController()
             carListVC.selectedZone = zoneAnnotation.zone
