@@ -110,11 +110,11 @@ class MainViewController: UIViewController {
         ) {
                 print("zonePin found")
             //zonePin 위치로 이동
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.5) {
                 self.moveLocation(latitudeValue: zonePin.coordinate.latitude, longtudeValue: zonePin.coordinate.longitude, delta: self.defaultSpan)
             } completion: { _ in
                 //carList 열기
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
                     self.mapView.selectAnnotation(zonePin, animated: true)
                 })
             }
