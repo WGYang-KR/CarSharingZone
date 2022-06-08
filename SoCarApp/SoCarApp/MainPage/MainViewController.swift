@@ -19,9 +19,11 @@ class MainViewController: UIViewController {
         manager.delegate = self
         return manager
      }()
+    
     var zones: [Zone]!
     
-    let mkSpanSetting =  MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01) //초기 축적도
+    let defaultSpan = 0.01 //기본 축적도
+    let defaultMKCoSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     let mkInitialCoordinate = CLLocationCoordinate2D(latitude: 37.54330366639085, longitude: 127.04455548501139) //서울숲
 
     override func viewDidLoad() {
@@ -34,10 +36,9 @@ class MainViewController: UIViewController {
         getLocationUsagePermission()
         let locationAuthorization = CLLocationManager.authorizationStatus()
         if locationAuthorization == .authorizedWhenInUse || locationAuthorization == .authorizedAlways {
-            //findMyLocation()
-            mapView.setRegion(MKCoordinateRegion(center: mkInitialCoordinate, span: mkSpanSetting), animated: true )
+            findMyLocation()
         } else {
-            mapView.setRegion(MKCoordinateRegion(center: mkInitialCoordinate, span: mkSpanSetting), animated: true )
+            mapView.setRegion(MKCoordinateRegion(center: mkInitialCoordinate, span: defaultMKCoSpan), animated: true )
         }
         
         //MARK: 쏘카존 핀 추가
@@ -85,13 +86,16 @@ class MainViewController: UIViewController {
     }
     
     func findMyLocation() {
-        guard let currentLocation = locationManager.location else {
+        guard let currentCoordinate = locationManager.location?.coordinate else {
             getLocationUsagePermission()
             print("location failed")
             return
         }
         mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.follow, animated: true)
+        let region = MKCoordinateRegion(center: currentCoordinate, span: defaultMKCoSpan)
+        self.mapView.setRegion(region, animated: true)
+   
+//        mapView.setUserTrackingMode(.follow, animated: true)
     }
     
     //MARK: - 특정 핀 위치로 이동 후 목록 열기
@@ -107,7 +111,7 @@ class MainViewController: UIViewController {
                 print("zonePin found")
             //zonePin 위치로 이동
             UIView.animate(withDuration: 1) {
-                self.moveLocation(latitudeValue: zonePin.coordinate.latitude, longtudeValue: zonePin.coordinate.longitude, delta: 0.005)
+                self.moveLocation(latitudeValue: zonePin.coordinate.latitude, longtudeValue: zonePin.coordinate.longitude, delta: self.defaultSpan)
             } completion: { _ in
                 //carList 열기
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
@@ -137,6 +141,20 @@ class MainViewController: UIViewController {
 
 //MARK: - Extension: CLLocationManagerDelegate
 extension MainViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print(#function)
+        checkUserLocationServicesAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+            // the most recent location update is at the end of the array.
+            let location: CLLocation = locations[locations.count - 1]
+            let longtitude: CLLocationDegrees = location.coordinate.longitude
+            let latitude:CLLocationDegrees = location.coordinate.latitude
+
+    }
     
     func getLocationUsagePermission() {
         self.locationManager.requestWhenInUseAuthorization()
@@ -210,26 +228,12 @@ extension MainViewController: CLLocationManagerDelegate {
             checkCurrentLocationAuthorization(authorizationStatus: authorizationStatus)
         }
     }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print(#function)
-        checkUserLocationServicesAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-            // the most recent location update is at the end of the array.
-            let location: CLLocation = locations[locations.count - 1]
-            let longtitude: CLLocationDegrees = location.coordinate.longitude
-            let latitude:CLLocationDegrees = location.coordinate.latitude
-
-    }
 }
 
 
 //MARK: - Extension: MKMapViewDelegate
 extension MainViewController: MKMapViewDelegate {
-
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self) else {

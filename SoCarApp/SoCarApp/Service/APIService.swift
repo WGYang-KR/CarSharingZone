@@ -12,6 +12,7 @@ import RxSwift
 
 
 class APIService {
+    
     let zonesUrl = "http://localhost:3000/zones"
     let carsUrl = "http://localhost:3000/cars?zones_like="
     
