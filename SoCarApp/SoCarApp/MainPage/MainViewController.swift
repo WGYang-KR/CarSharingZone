@@ -97,6 +97,7 @@ class MainViewController: UIViewController {
     func findMyLocation() {
         guard let currentCoordinate = locationManager.location?.coordinate else {
             getLocationUsagePermission()
+            checkUserLocationServicesAuthorization()
             print("location failed")
             return
         }
@@ -170,6 +171,7 @@ extension MainViewController: CLLocationManagerDelegate {
             let latitude:CLLocationDegrees = location.coordinate.latitude
 
     }
+    
     
     func getLocationUsagePermission() {
         self.locationManager.requestWhenInUseAuthorization()
