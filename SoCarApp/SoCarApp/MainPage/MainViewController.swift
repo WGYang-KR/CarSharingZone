@@ -104,11 +104,9 @@ class MainViewController: UIViewController {
         let region = MKCoordinateRegion(center: currentCoordinate, span: defaultMKCoSpan)
     
         self.mapView.setRegion(region, animated: true)
-    
-        //MARK: 현재위치 이동 후 가끔 핀이 클릭되지 않는 문제.
-        //MARK: 현재위치 이동 후 핀 새로고침. (다른 해결법 찾자)
+        //MARK: 위치 이동 후 가끔 핀이 클릭되지 않는 문제.
+        //MARK: 화면 이동 후 핀 새로고침. (다른 해결법?)
         self.installPin()
-   
 //        mapView.setUserTrackingMode(.follow, animated: true)
     }
     
@@ -191,11 +189,11 @@ extension MainViewController: CLLocationManagerDelegate {
             goSetting()
         case .authorizedAlways:
             print("always")
-//            findMyLocation()
+            findMyLocation()
         case .authorizedWhenInUse:
             print("wheninuse")
-//            findMyLocation()
             locationManager.startUpdatingLocation()
+            findMyLocation()
         @unknown default:
             print("unknown")
         }
@@ -251,6 +249,11 @@ extension MainViewController: CLLocationManagerDelegate {
 //MARK: - Extension: MKMapViewDelegate
 extension MainViewController: MKMapViewDelegate {
  
+
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+//        self.installPin()
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self) else {
