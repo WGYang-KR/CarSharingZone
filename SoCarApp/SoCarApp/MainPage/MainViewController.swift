@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
         return manager
      }()
     
-    var zones: [Zone]!
+    var zones = [Zone]()
     
     let defaultSpan = 0.01 //기본 축적도
     let defaultMKCoSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -42,17 +42,7 @@ class MainViewController: UIViewController {
         }
         
         //MARK: 쏘카존 핀 추가
-        let APIServiceIns = APIService()
-        APIServiceIns.requestZones{
-            zones in
-            self.zones = zones
-            //핀 만들기
-            DispatchQueue.main.async {
-                self.addPin(zones: self.zones)
-            }
-         
-        }
-        
+        self.installPin()
         
         //MARK: 뒤로가기 버튼 설정
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic24_back")
@@ -60,9 +50,28 @@ class MainViewController: UIViewController {
         
     }
     
-    private func addPin( zones: [Zone]) {
+    
+    func installPin() {
+        self.mapView.removeAnnotations(self.mapView.annotations)
         
-        for zone in zones {
+        if self.zones.isEmpty {
+            let APIServiceIns = APIService()
+            APIServiceIns.requestZones{
+                zones in
+                self.zones = zones
+                //핀 만들기
+                DispatchQueue.main.async {
+                    self.addPin()
+                }
+             
+            }
+        } else {
+            self.addPin()
+        }
+    }
+    
+    private func addPin() {
+        for zone in self.zones {
             
             let pin = ZoneAnnotation(zone: zone)
             mapView.addAnnotation(pin)
@@ -93,7 +102,12 @@ class MainViewController: UIViewController {
         }
         mapView.showsUserLocation = true
         let region = MKCoordinateRegion(center: currentCoordinate, span: defaultMKCoSpan)
+    
         self.mapView.setRegion(region, animated: true)
+    
+        //MARK: 현재위치 이동 후 가끔 핀이 클릭되지 않는 문제.
+        //MARK: 현재위치 이동 후 핀 새로고침. (다른 해결법 찾자)
+        self.installPin()
    
 //        mapView.setUserTrackingMode(.follow, animated: true)
     }
@@ -108,13 +122,16 @@ class MainViewController: UIViewController {
             }
             return false }
         ) {
-                print("zonePin found")
+//            print("\(zonePin.title)으로 이동 시작.")
             //zonePin 위치로 이동
             UIView.animate(withDuration: 0.5) {
                 self.moveLocation(latitudeValue: zonePin.coordinate.latitude, longtudeValue: zonePin.coordinate.longitude, delta: self.defaultSpan)
+//                print("\(zonePin.title)으로 화면 이동 시작.")
             } completion: { _ in
                 //carList 열기
+//                print("\(zonePin.title)으로 화면 이동 완료.")
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+                    print("Annotion: \(zonePin). 차량 목록 열기.")
                     self.mapView.selectAnnotation(zonePin, animated: true)
                 })
             }
@@ -233,7 +250,7 @@ extension MainViewController: CLLocationManagerDelegate {
 
 //MARK: - Extension: MKMapViewDelegate
 extension MainViewController: MKMapViewDelegate {
-    
+ 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self) else {
@@ -241,6 +258,7 @@ extension MainViewController: MKMapViewDelegate {
             MyLocationAnnotationView.image = UIImage(named: "img_current")
                     return MyLocationAnnotationView
         }
+        
         var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Custom")
         
         if annotationView == nil {
@@ -259,6 +277,8 @@ extension MainViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        print(#function)
         //ZoneAnnotation으로 형 변환
         if let zoneAnnotation = view.annotation as? ZoneAnnotation {
             
