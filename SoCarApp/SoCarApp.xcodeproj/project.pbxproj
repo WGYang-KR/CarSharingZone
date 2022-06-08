@@ -79,6 +79,7 @@
 			children = (
 				6A2B025D284B0B90002332DC /* MainViewController.swift */,
 				6A58E38C284D8FC400456E76 /* ZoneAnnotation.swift */,
+				6A411D7F2848A02E00E092BD /* Main.storyboard */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -128,7 +129,6 @@
 				6A58E3B3284F107A00456E76 /* FavoriteZonePage */,
 				6A2B025C284B0B6A002332DC /* MainPage */,
 				6A411D792848A02E00E092BD /* AppDelegate.swift */,
-				6A411D7F2848A02E00E092BD /* Main.storyboard */,
 				6A411D7B2848A02E00E092BD /* SceneDelegate.swift */,
 				6A411D7D2848A02E00E092BD /* ViewController.swift */,
 				6A411D822848A03400E092BD /* Assets.xcassets */,
