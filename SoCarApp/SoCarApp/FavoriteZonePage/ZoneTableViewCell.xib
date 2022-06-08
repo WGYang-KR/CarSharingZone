@@ -13,7 +13,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="91" id="KGk-i7-Jjw" customClass="ZoneTableViewCell" customModule="SoCarApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -46,7 +46,7 @@
                     <constraint firstAttribute="trailing" secondItem="B6q-KL-2hi" secondAttribute="trailing" constant="24" id="4C6-ON-4mt"/>
                     <constraint firstItem="uEC-sb-aP6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="AZm-v3-H63"/>
                     <constraint firstItem="B6q-KL-2hi" firstAttribute="centerY" secondItem="uEC-sb-aP6" secondAttribute="centerY" id="DAS-g7-OEQ"/>
-                    <constraint firstAttribute="bottom" secondItem="uEC-sb-aP6" secondAttribute="bottom" constant="18" id="Hff-P1-77N"/>
+                    <constraint firstAttribute="bottom" secondItem="uEC-sb-aP6" secondAttribute="bottom" priority="750" constant="18" id="Hff-P1-77N"/>
                     <constraint firstItem="uEC-sb-aP6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="UnH-Od-5qn"/>
                     <constraint firstItem="B6q-KL-2hi" firstAttribute="leading" secondItem="uEC-sb-aP6" secondAttribute="trailing" constant="20" id="wxM-yG-Ib2"/>
                 </constraints>

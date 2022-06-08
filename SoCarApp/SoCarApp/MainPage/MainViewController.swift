@@ -29,9 +29,9 @@ class MainViewController: UIViewController {
         
         mapView.delegate = self
         locationManager.delegate = self
-    
-        getLocationUsagePermission()
         
+        //MARK: 위치권한 확인 및 초기 위치 설정
+        getLocationUsagePermission()
         let locationAuthorization = CLLocationManager.authorizationStatus()
         if locationAuthorization == .authorizedWhenInUse || locationAuthorization == .authorizedAlways {
             //findMyLocation()
@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
             mapView.setRegion(MKCoordinateRegion(center: mkInitialCoordinate, span: mkSpanSetting), animated: true )
         }
         
-        
+        //MARK: 쏘카존 핀 추가
         let APIServiceIns = APIService()
         APIServiceIns.requestZones{
             zones in
@@ -53,12 +53,10 @@ class MainViewController: UIViewController {
         }
         
         
-        // bar button 설정
+        //MARK: 뒤로가기 버튼 설정
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "ic24_back")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "ic24_back")
         
-      
-
     }
     
     private func addPin( zones: [Zone]) {
@@ -68,7 +66,6 @@ class MainViewController: UIViewController {
             let pin = ZoneAnnotation(zone: zone)
             mapView.addAnnotation(pin)
         }
-        openCarListPage(zoneID:"14")
     }
 
     
@@ -97,6 +94,7 @@ class MainViewController: UIViewController {
         mapView.setUserTrackingMode(.follow, animated: true)
     }
     
+    //MARK: - 특정 핀 위치로 이동 후 목록 열기
     func openCarListPage(zoneID: String) {
         
         //zoneID에 해당하는 annotation 찾아서 이동.
@@ -108,12 +106,31 @@ class MainViewController: UIViewController {
         ) {
                 print("zonePin found")
             //zonePin 위치로 이동
-            //carList 열기
+            UIView.animate(withDuration: 1) {
+                self.moveLocation(latitudeValue: zonePin.coordinate.latitude, longtudeValue: zonePin.coordinate.longitude, delta: 0.005)
+            } completion: { _ in
+                //carList 열기
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    self.mapView.selectAnnotation(zonePin, animated: true)
+                })
+            }
+           
+            
+
+            
         } else {
             
             print("해당 Pin 찾을 수 없음")
         }
  
+    }
+    
+    //MARK: - 특정 좌표로 이동
+    func moveLocation(latitudeValue: CLLocationDegrees, longtudeValue: CLLocationDegrees, delta span: Double) {
+        let pLocation = CLLocationCoordinate2DMake(latitudeValue, longtudeValue)
+        let pSpanValue = MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
+        let pRegion = MKCoordinateRegion(center: pLocation, span: pSpanValue)
+        self.mapView.setRegion(pRegion, animated: true)
     }
 
 }
@@ -209,40 +226,30 @@ extension MainViewController: CLLocationManagerDelegate {
     }
 }
 
+
+//MARK: - Extension: MKMapViewDelegate
 extension MainViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self) else {
-                    // 유저 위치를 나타낼때는 기본 파란 그 점 아시죠? 그거 쓰고싶으니까~ 요렇게 해주시고 만약에 쓰고싶은 어노테이션이 있다면 그녀석을 리턴해 주시면 되긋죠? 하하!
             let MyLocationAnnotationView: MKAnnotationView = MKAnnotationView()
             MyLocationAnnotationView.image = UIImage(named: "img_current")
                     return MyLocationAnnotationView
         }
-        //우리가 만들고 싶은 커스텀 어노테이션을 만들어 줍시다. 그냥 뿅 생길 수 없겠죠? 보여주고 싶은 모양을 뷰로 짜준다고 생각하시면 됩니다.
-        //즉시 인스턴스로 만들어 줘 보겠습니다요. 어떻게 생겼을지는 아직 안정했지만 일단 커스텀이라는 식별자?를 가진 뷰로 만들어 줬습니다.
-        //마커 어노테이션뷰 라는 어노테이션뷰를 상속받는 뷰가 따로있습니다. 풍선모양이라고 하는데 한번 만들어 보시는것도 좋겠네요! 테두리가 있고 안에 내용물을 바꾸는 식으로 설정이 되는듯 해요.
         var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Custom")
         
         if annotationView == nil {
-            //없으면 하나 만들어 주시고
+            //없으면 하나 만들기
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "Custom")
 //            annotationView?.canShowCallout = true
-            
-//            //callOutView를 통해서 추가적인 액션을 더해줄수도 있겠죠! 와 무지 간편합니다!
-//            let miniButton = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-//            miniButton.setImage(UIImage(systemName: "person"), for: .normal)
-//            miniButton.tintColor = .blue
-//            annotationView?.rightCalloutAccessoryView = miniButton
-            
+
         } else {
             //있으면 등록된 걸 쓰시면 됩니다.
             annotationView?.annotation = annotation
         }
         
         annotationView?.image = UIImage(named: "img_zone_shadow")
-        
-        //상황에 따라 다른 annotationView를 리턴하게 하면 여러가지 모양을 쓸 수도 있겠죠?
         
         return annotationView
     }
@@ -253,20 +260,17 @@ extension MainViewController: MKMapViewDelegate {
             
             print("Zone Clicked. ZoneId: \(zoneAnnotation.zone)")
             
+            //차량 목록 페이지 열기
             let carListVC = CarListViewController()
             carListVC.selectedZone = zoneAnnotation.zone
-            
             //뒤로가기 버튼 설정
             let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
             self.navigationItem.backBarButtonItem = backBarButtonItem
-            
-            
             navigationController?.pushViewController(carListVC, animated: true)
             
         } else {
             print("Error: Not ZoneAnnotation")
         }
-        
-        //해당 Zone Car List 호출
+
     }
 }
