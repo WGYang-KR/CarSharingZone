@@ -1,7 +1,10 @@
-# 쏘카 iOS 과제 전형 - 쏘카 앱 만들기
-## 과제 내용
-- 안내 메일에 첨부되어 있는 문서를 참고해주세요.
+[카셰어링존 앱 구현]
 
-## 제출
-- 과제 완성본은 제공된 레포지토리의 `main` 브랜치에 있어야합니다.
-- 빌드나 테스트시에 필요한 사항이나 기타 전달이 필요한 내용은 `README.md` 파일에 작성해 주세요.
+---
+빌드 테스트 시 JSON 서버필요.
+- 서버설치: https://github.com/typicode/json-server
+- 폴더 최상단 db.json 사용.
+---
+테스트화면
+
+![Simulator Screen Recording - iPod touch (7th generation) - 2022-06-24 at 04 06 07](https://user-images.githubusercontent.com/72122503/175379301-bc27f133-0a2d-4061-982e-e651b4390987.gif)
