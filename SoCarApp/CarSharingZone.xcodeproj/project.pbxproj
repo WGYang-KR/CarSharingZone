@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		677EE6F564F5372843B96897 /* Pods_SoCarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F401DC11CABAA1429E52E9 /* Pods_SoCarApp.framework */; };
 		6A2B025F284B0B90002332DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B025D284B0B90002332DC /* MainViewController.swift */; };
 		6A2B0265284B2CD9002332DC /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B0264284B2CD9002332DC /* Car.swift */; };
 		6A2B0267284B2CE3002332DC /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B0266284B2CE3002332DC /* Zone.swift */; };
@@ -29,6 +28,7 @@
 		6A58E3B7284F10D000456E76 /* FavoriteZoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A58E3B5284F10D000456E76 /* FavoriteZoneViewController.xib */; };
 		6A58E3BA284F119800456E76 /* ZoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58E3B8284F119800456E76 /* ZoneTableViewCell.swift */; };
 		6A58E3BB284F119800456E76 /* ZoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A58E3B9284F119800456E76 /* ZoneTableViewCell.xib */; };
+		FFF8D1CE4EE37D0CBB42B0F4 /* Pods_CarSharingZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E700EF80BCEE05ABE4352969 /* Pods_CarSharingZone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		6A2B0264284B2CD9002332DC /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		6A2B0266284B2CE3002332DC /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 		6A2B0269284CB09C002332DC /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		6A411D762848A02E00E092BD /* SoCarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoCarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A411D762848A02E00E092BD /* CarSharingZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarSharingZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A411D792848A02E00E092BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A411D7B2848A02E00E092BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6A411D802848A02E00E092BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +56,9 @@
 		6A58E3B5284F10D000456E76 /* FavoriteZoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteZoneViewController.xib; sourceTree = "<group>"; };
 		6A58E3B8284F119800456E76 /* ZoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneTableViewCell.swift; sourceTree = "<group>"; };
 		6A58E3B9284F119800456E76 /* ZoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoneTableViewCell.xib; sourceTree = "<group>"; };
-		E0F401DC11CABAA1429E52E9 /* Pods_SoCarApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoCarApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90079F883C2114CBEBF5633C /* Pods-CarSharingZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarSharingZone.release.xcconfig"; path = "Target Support Files/Pods-CarSharingZone/Pods-CarSharingZone.release.xcconfig"; sourceTree = "<group>"; };
+		91714CD5CB3C801D14F18BCB /* Pods-CarSharingZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarSharingZone.debug.xcconfig"; path = "Target Support Files/Pods-CarSharingZone/Pods-CarSharingZone.debug.xcconfig"; sourceTree = "<group>"; };
+		E700EF80BCEE05ABE4352969 /* Pods_CarSharingZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarSharingZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C4C6708D1A9E0E7191EA24 /* Pods-SoCarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoCarApp.release.xcconfig"; path = "Target Support Files/Pods-SoCarApp/Pods-SoCarApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				677EE6F564F5372843B96897 /* Pods_SoCarApp.framework in Frameworks */,
+				FFF8D1CE4EE37D0CBB42B0F4 /* Pods_CarSharingZone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +104,7 @@
 		6A411D6D2848A02E00E092BD = {
 			isa = PBXGroup;
 			children = (
-				6A411D782848A02E00E092BD /* SoCarApp */,
+				6A411D782848A02E00E092BD /* CarSharingZone */,
 				6A411D772848A02E00E092BD /* Products */,
 				D8D25CCFFE2B387F449AF4F9 /* Pods */,
 				C15AB986A2251385DFA401BA /* Frameworks */,
@@ -112,12 +114,12 @@
 		6A411D772848A02E00E092BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A411D762848A02E00E092BD /* SoCarApp.app */,
+				6A411D762848A02E00E092BD /* CarSharingZone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6A411D782848A02E00E092BD /* SoCarApp */ = {
+		6A411D782848A02E00E092BD /* CarSharingZone */ = {
 			isa = PBXGroup;
 			children = (
 				6A58E39C284DB0B000456E76 /* FavoriteZone */,
@@ -132,7 +134,7 @@
 				6A411D842848A03400E092BD /* LaunchScreen.storyboard */,
 				6A411D872848A03400E092BD /* Info.plist */,
 			);
-			path = SoCarApp;
+			path = CarSharingZone;
 			sourceTree = "<group>";
 		};
 		6A58E38F284DA34000456E76 /* CarListPage */ = {
@@ -170,7 +172,7 @@
 		C15AB986A2251385DFA401BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E0F401DC11CABAA1429E52E9 /* Pods_SoCarApp.framework */,
+				E700EF80BCEE05ABE4352969 /* Pods_CarSharingZone.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -180,6 +182,8 @@
 			children = (
 				21196F0AAD2CE482269A7593 /* Pods-SoCarApp.debug.xcconfig */,
 				E8C4C6708D1A9E0E7191EA24 /* Pods-SoCarApp.release.xcconfig */,
+				91714CD5CB3C801D14F18BCB /* Pods-CarSharingZone.debug.xcconfig */,
+				90079F883C2114CBEBF5633C /* Pods-CarSharingZone.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -187,9 +191,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A411D752848A02E00E092BD /* SoCarApp */ = {
+		6A411D752848A02E00E092BD /* CarSharingZone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A411D8A2848A03400E092BD /* Build configuration list for PBXNativeTarget "SoCarApp" */;
+			buildConfigurationList = 6A411D8A2848A03400E092BD /* Build configuration list for PBXNativeTarget "CarSharingZone" */;
 			buildPhases = (
 				6C27253A39CFB0D2645938E2 /* [CP] Check Pods Manifest.lock */,
 				6A411D722848A02E00E092BD /* Sources */,
@@ -201,9 +205,9 @@
 			);
 			dependencies = (
 			);
-			name = SoCarApp;
+			name = CarSharingZone;
 			productName = SoCarApp;
-			productReference = 6A411D762848A02E00E092BD /* SoCarApp.app */;
+			productReference = 6A411D762848A02E00E092BD /* CarSharingZone.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -221,7 +225,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A411D712848A02E00E092BD /* Build configuration list for PBXProject "SoCarApp" */;
+			buildConfigurationList = 6A411D712848A02E00E092BD /* Build configuration list for PBXProject "CarSharingZone" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -234,7 +238,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6A411D752848A02E00E092BD /* SoCarApp */,
+				6A411D752848A02E00E092BD /* CarSharingZone */,
 			);
 		};
 /* End PBXProject section */
@@ -273,7 +277,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SoCarApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CarSharingZone-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -286,15 +290,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SoCarApp/Pods-SoCarApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CarSharingZone/Pods-CarSharingZone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SoCarApp/Pods-SoCarApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-CarSharingZone/Pods-CarSharingZone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SoCarApp/Pods-SoCarApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CarSharingZone/Pods-CarSharingZone-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -458,7 +462,7 @@
 		};
 		6A411D8B2848A03400E092BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21196F0AAD2CE482269A7593 /* Pods-SoCarApp.debug.xcconfig */;
+			baseConfigurationReference = 91714CD5CB3C801D14F18BCB /* Pods-CarSharingZone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -466,7 +470,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WRMZ68J9BN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SoCarApp/Info.plist;
+				INFOPLIST_FILE = CarSharingZone/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App needs location information";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -490,7 +494,7 @@
 		};
 		6A411D8C2848A03400E092BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8C4C6708D1A9E0E7191EA24 /* Pods-SoCarApp.release.xcconfig */;
+			baseConfigurationReference = 90079F883C2114CBEBF5633C /* Pods-CarSharingZone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -498,7 +502,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WRMZ68J9BN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SoCarApp/Info.plist;
+				INFOPLIST_FILE = CarSharingZone/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App needs location information";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -523,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A411D712848A02E00E092BD /* Build configuration list for PBXProject "SoCarApp" */ = {
+		6A411D712848A02E00E092BD /* Build configuration list for PBXProject "CarSharingZone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A411D882848A03400E092BD /* Debug */,
@@ -532,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A411D8A2848A03400E092BD /* Build configuration list for PBXNativeTarget "SoCarApp" */ = {
+		6A411D8A2848A03400E092BD /* Build configuration list for PBXNativeTarget "CarSharingZone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A411D8B2848A03400E092BD /* Debug */,
