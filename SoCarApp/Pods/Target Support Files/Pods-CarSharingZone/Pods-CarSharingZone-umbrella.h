@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_SoCarAppVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_SoCarAppVersionString[];
+FOUNDATION_EXPORT double Pods_CarSharingZoneVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_CarSharingZoneVersionString[];
 

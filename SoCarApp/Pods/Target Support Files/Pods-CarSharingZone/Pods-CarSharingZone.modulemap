@@ -1,0 +1,6 @@
+framework module Pods_CarSharingZone {
+  umbrella header "Pods-CarSharingZone-umbrella.h"
+
+  export *
+  module * { export * }
+}
